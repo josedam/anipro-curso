@@ -8,11 +8,13 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { LoginGuard } from '../services/services.index';
 
 const routes: Routes = [
   {
     path: '',
     component: PagesComponent,
+    canActivate: [LoginGuard],
     children: [
       { path: 'account-settings', component: AccountSettingsComponent, data: {titulo: 'Tema'} },
       { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'} },
