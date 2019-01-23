@@ -36,8 +36,8 @@
                     <img *ngIf="!imagenSubir" [src]="usuario.img | imagen" class="img-circle" width="150">
                     <img *ngIf="imagenSubir" [src]="imagenUrl" class="img-circle" width="150">
 
-                    <h4 class="card-title m-t-10">Hanna Gover</h4>
-                    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                    <h4 class="card-title m-t-10">{{usuario.nombre}}</h4>
+                    <h6 class="card-subtitle">{{usuario.email}}</h6>
 
                     <div class="card-subtitle">
                         <input type="file" (change)="seleccionaImagen($event.target.files[0])" class="waves-effect waves-light m-r-10">

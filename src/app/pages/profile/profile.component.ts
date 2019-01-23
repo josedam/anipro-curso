@@ -15,12 +15,13 @@ export class ProfileComponent implements OnInit {
   imagenUrl: string;
 
   constructor(
-    private usuarioService: UsuarioService;
+    private usuarioService: UsuarioService
   ) {
     this.usuario = this.usuarioService.usuario;
    }
 
   ngOnInit() {
+
   }
 
   guardar( f ) {
@@ -39,8 +40,8 @@ export class ProfileComponent implements OnInit {
       this.imagenSubir = archivo;
 
       const reader = new  FileReader();
-      reader.onloadend = () => this.imagenUrl = reader.result;
-      const urlTemp = reader.readAsDataURL(archivo);
+      reader.readAsDataURL(archivo);
+      reader.onloadend = () => this.imagenUrl = String(reader.result);
     }
   }
 

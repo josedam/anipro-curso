@@ -91,14 +91,16 @@ export class UsuarioService {
     const url = URL_SERVICIOS + '/usuario/' + usuario._id + '?token=' + this.token;
     return this.http.put(url, usuario).pipe(
       map((resp: any) => {
-        this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+        if (usuario._id === this.usuario._id) {
+          this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+        }
         swal('Usuario Actualizado', usuario.nombre, 'success');
         return true; // resp.body;
       })
       );
     }
-    
-    actualizarImagen(archivo: File, id: string){
+
+  actualizarImagen(archivo: File, id: string){
       this.subirArchivoService.subirArchivo(archivo, 'usuario', id)
       .then((resp: any) => {
         swal('Imagen Actualizada', this.usuario.nombre, 'success');
@@ -109,4 +111,22 @@ export class UsuarioService {
         console.log('Error', resp);
       });
   }
+
+  cargarUsuarios(desde: number = 0) {
+    const url = URL_SERVICIOS + '/usuario' + '?desde=' + desde;
+    return this.http.get(url);
+  }
+
+  buscarUsuarios(termino: string) {
+    const url = URL_SERVICIOS + '/busqueda/coleccion/usuario/' + termino;
+    return this.http.get(url).pipe(
+      map((resp: any) => resp.usuario)
+    );
+  }
+
+  borrarUsuario(id: string) {
+    const url = URL_SERVICIOS + '/usuario/' + id + '?token=' + this.token;
+    return this.http.delete(url);
+  }
+
 }
