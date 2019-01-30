@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService, ModalUploadService } from 'src/app/services/services.index';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-usuarios',
@@ -15,7 +15,7 @@ export class UsuariosComponent implements OnInit {
   cargando: boolean = true;
 
   constructor(
-    private usuarioService: UsuarioService,
+    private _usuarioService: UsuarioService,
     private _modalUploadService: ModalUploadService) { }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class UsuariosComponent implements OnInit {
 
   cargarUsuarios() {
     this.cargando = true;
-    this.usuarioService.cargarUsuarios(this.desde)
+    this._usuarioService.cargarUsuarios(this.desde)
     .subscribe((resp: any) => {
       this.asignarUsuarios(resp.usuarios, resp.total);
       // this.totalRegistros = resp.total;
@@ -55,7 +55,7 @@ export class UsuariosComponent implements OnInit {
       this.cargarUsuarios();
 
     } else {
-      this.usuarioService.buscarUsuarios(termino)
+      this._usuarioService.buscarUsuarios(termino)
       .subscribe((usuarios: Usuario[]) => {
         this.asignarUsuarios(usuarios, usuarios.length);
         // this.usuarios = usuarios;
@@ -65,7 +65,7 @@ export class UsuariosComponent implements OnInit {
   }
 
 borrarUsuario(usuario: Usuario) {
-  if (usuario._id === this.usuarioService.usuario._id) {
+  if (usuario._id === this._usuarioService.usuario._id) {
     swal('No se puede Borrar', 'Imposible borrarse a si mismo', 'error');
     return;
   }
@@ -78,7 +78,7 @@ borrarUsuario(usuario: Usuario) {
   })
   .then((puedeBorrar) => {
     if (puedeBorrar) {
-      this.usuarioService.borrarUsuario(usuario._id)
+      this._usuarioService.borrarUsuario(usuario._id)
         .subscribe(usuarioBorrado => {
           this.cargarUsuarios();
           swal('Usuario Borrado', {
@@ -90,7 +90,7 @@ borrarUsuario(usuario: Usuario) {
 }
 
 guardarUsuario(usuario: Usuario) {
-  this.usuarioService.actualizarUsuario(usuario)
+  this._usuarioService.actualizarUsuario(usuario)
     .subscribe();
 }
 

@@ -2,12 +2,20 @@
     cursor: pointer;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .img-50 {
     width: 50px;
 }
 
 .w-70 {
     width: 70px;
+}
+
+.w-100 {
+    width: 100%;
 }
 
 .oculto {
