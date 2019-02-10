@@ -80,9 +80,9 @@ export class MedicoComponent implements OnInit, OnDestroy {
     this._medicoService.obtenerMedico(id)
     .subscribe((medico: Medico) => {
       this.medico = medico;
-      this.hospital = medico.hospital;             // Recibe un Objeto Hospital
-      this.medico.hospital = medico.hospital._id;  // Lo cambia por el id del hospital que es string
-     // this.cambioHospital(this.medico.hospital);
+      // this.hospital = medico.hospital;             // Recibe un Objeto Hospital
+      // this.medico.hospital = medico.hospital._id;  // Lo cambia por el id del hospital que es string
+      this.cambioHospital(this.medico.hospital);
     });
 
   }

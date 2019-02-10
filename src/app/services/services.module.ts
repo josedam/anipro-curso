@@ -6,6 +6,7 @@ import {
   SidebarService,
   UsuarioService,
   LoginGuard,
+  AdminGuard,
   SubirArchivoService,
   ModalUploadService,
   HospitalService,
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     UsuarioService,
     HospitalService,
     LoginGuard,
+    AdminGuard,
     SubirArchivoService,
     ModalUploadService,
     MedicoService

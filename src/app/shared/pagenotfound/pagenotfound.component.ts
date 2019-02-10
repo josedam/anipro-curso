@@ -5,9 +5,11 @@ declare function init_plugins();
 @Component({
   selector: 'app-pagenotfound',
   templateUrl: './pagenotfound.component.html',
-  styles: []
+  styleUrls: ['./pagenotfound.css']
 })
 export class PagenotfoundComponent implements OnInit {
+
+  anio: number = new Date().getFullYear();
 
   constructor() { }
 
