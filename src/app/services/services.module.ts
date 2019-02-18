@@ -7,6 +7,7 @@ import {
   UsuarioService,
   LoginGuard,
   AdminGuard,
+  VerificarTokenGuard,
   SubirArchivoService,
   ModalUploadService,
   HospitalService,
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     HospitalService,
     LoginGuard,
     AdminGuard,
+    VerificarTokenGuard,
     SubirArchivoService,
     ModalUploadService,
     MedicoService

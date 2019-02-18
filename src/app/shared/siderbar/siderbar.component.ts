@@ -20,4 +20,7 @@ export class SiderbarComponent implements OnInit {
     this._sidebar.cargarMenu();
   }
 
+  logout() {
+    this.usuarioService.logout();
+  }
 }

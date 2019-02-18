@@ -8,13 +8,15 @@ import { SiderbarComponent } from './siderbar/siderbar.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RouterModule } from '@angular/router';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 @NgModule({
     declarations: [
         HeaderComponent,
         SiderbarComponent,
         BreadcrumbsComponent,
-        PagenotfoundComponent
+        PagenotfoundComponent,
+        ModalUploadComponent
     ],
     imports: [
          CommonModule,
@@ -25,7 +27,8 @@ import { RouterModule } from '@angular/router';
         HeaderComponent,
         SiderbarComponent,
         BreadcrumbsComponent,
-        PagenotfoundComponent
+        PagenotfoundComponent,
+        ModalUploadComponent
     ],
     providers: [],
 })

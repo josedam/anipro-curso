@@ -48,6 +48,23 @@ export class UsuarioService {
     }
   }
 
+  renovarToken() {
+    const url = URL_SERVICIOS + '/login/renovartoken' + '?token=' + this.token;
+    return this.http.get(url)
+    .pipe(
+      map((resp: any) => {
+        this.guardarStorage(resp.id, resp.token, resp.usuario, resp.menu);
+        return true;
+      }),
+      catchError((err: any) => {
+        this.router.navigate(['/login']);
+        swal('Renovacion Rechazada', 'Usuario debe Autenticarse..', 'error');
+        return throwError(err); // of([]); //   throwError(err);
+      })
+    );
+
+  }
+
   estaLogeado() {
     return  this.token.length > 0;
   }
